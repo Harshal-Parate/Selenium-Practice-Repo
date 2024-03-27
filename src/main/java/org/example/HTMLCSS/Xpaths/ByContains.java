@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class ByContains {
 
     @Test
@@ -14,6 +16,7 @@ public class ByContains {
         WebDriver driver = new EdgeDriver();
         driver.get("https://app.vwo.com/#/login");
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         /*
 
         //tageName[contains(@attribute,'attributeValue')]
@@ -26,7 +29,7 @@ public class ByContains {
 
         ByAttribute.sendKeys("Harshal");
 
-        Thread.sleep(2000);
+
         driver.quit();
 
     }

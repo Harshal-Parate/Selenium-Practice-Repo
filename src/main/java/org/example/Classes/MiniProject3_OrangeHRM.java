@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.*;
 
+import java.time.Duration;
 import java.util.List;
 
 public class MiniProject3_OrangeHRM {
@@ -21,7 +22,7 @@ public class MiniProject3_OrangeHRM {
     @Test
     public void Tests() throws InterruptedException {
 
-        Thread.sleep(2000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(4000));
 
         WebElement username = driver.findElement(By.cssSelector("input[name='username']"));
         WebElement password = driver.findElement(By.cssSelector("input[name='password']"));
@@ -31,8 +32,6 @@ public class MiniProject3_OrangeHRM {
         password.sendKeys("admin123");
         login.click();
 
-        Thread.sleep(5000);
-
         List<WebElement> listOfOptions = driver.findElements(By.xpath("//span[contains(@class, 'oxd-main-menu-item')]"));
 
         for (int i = 0; i < listOfOptions.size(); i++) {
@@ -41,7 +40,6 @@ public class MiniProject3_OrangeHRM {
                 break;
             }
         }
-        Thread.sleep(5000);
 
         List<WebElement> cardsTotal = driver.findElements(By.xpath("//div[@class='oxd-table-card']"));
 
@@ -56,8 +54,6 @@ public class MiniProject3_OrangeHRM {
                     if (innerElementCards.getText().equals("Shortlisted")) {
                         WebElement deleteButton = driver.findElement(By.xpath(initialPart + (i + 1) + finalPart + "[7]/child::div/button[2]"));
                         deleteButton.click();
-
-                        Thread.sleep(1000);
 
                         WebElement NoCancleButton = driver.findElement(By.xpath("//button[contains(@class, 'text orangehrm-button-margin')]"));
                         NoCancleButton.click();
