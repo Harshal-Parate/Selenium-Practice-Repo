@@ -30,6 +30,9 @@ public class ActionClass {
 
         actions.build().perform();
 
+        actions.sendKeys(Keys.SHIFT);
+        actions.sendKeys("harshal");
+
 
         //upload a file --> input box with type of it as "file"
 
